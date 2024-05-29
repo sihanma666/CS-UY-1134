@@ -5,10 +5,11 @@
 class Vector:
     def __init__(self, d):
         self.coords = [0] *d
-    def __init__(self, x, y, z):
-        self.coords.append(x)
-        self.coords.append(y)
-        self.coords.append(z)
+
+    def __init__(self, lst):
+        self.coords = []
+        for i in range(len(lst)):
+            self.coords.append(i)
 
     def __len__(self):
         return len(self.coords)
@@ -25,6 +26,41 @@ class Vector:
         result = Vector(len(self))
         for j in range(len(self)):
             result[j] = self[j] + other[j]
+        return result
+    
+    def __sub__(self, other):
+        if (len(self) != len(other)):
+            raise ValueError("dimensions don't match")
+        resultLst = Vector(len(self))
+        for i in range(len(self)):
+            resultLst[i] = self[i] - other[i]
+        return resultLst
+    
+    def __neg__(self):
+        resultLst = Vector(len(self))
+        for i in range(len(self)):
+            resultLst[i] = -1 * self[i]
+        return resultLst
+    
+    def __mul__(self, other):
+
+        if isinstance(other, int):
+            result = Vector(len(self))
+            for j in range(len(self)):
+                result[j] = other * self[j]
+            return result
+        else:
+            if (len(self) != len(other)):
+                raise ValueError("dimensions must agree")
+            result = 0
+            for j in range(len(self)):
+                result += self[j] * other[j]
+            return result
+
+    def __rmul__(self, other):
+        result = Vector(len(self))
+        for j in range(len(self)):
+            result[j] = other * self[j]
         return result
     
     def __eq__(self, other):
