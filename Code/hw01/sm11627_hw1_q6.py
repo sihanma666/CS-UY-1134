@@ -4,6 +4,3 @@ def split_parity(lst):
             lst.insert(0,lst.pop(i))
     return lst
         
-
-test = split_parity([1,2,3,4])
-print (test)

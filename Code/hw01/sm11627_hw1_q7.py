@@ -12,4 +12,4 @@ def main(): # i needed to take testcode out of main for it to work
         print("n =", n,"Approximation:", approx_str)
 
 
-
+main()
