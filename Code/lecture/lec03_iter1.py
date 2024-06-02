@@ -1,69 +1,72 @@
 
 def iterate_over_list(ls):
-    alias = ls;
-    index = 0;
+    alias = ls
+    index = 0
     while (index<len(ls)):
-        yield ls[index];
-        index+=1;
+        yield ls[index]
+        index+=1
 
 def binary_search1(ls,val):
-    left = 0;
-    right = len(ls)-1;
+    left = 0
+    right = len(ls)-1
     while (left<=right):
-        mid = (left+right)//2;
+        mid = (left+right)//2
         if (ls[mid] == val):
-            return mid;
+            return mid
         elif (val<ls[mid]):
-            right=mid-1;
+            right=mid-1
         else:
-            left=mid+1;
-    return None;
+            left=mid+1
+    return None
 
-def binary_search2(ls, val,start=0, end=None):
+def binary_search2(ls, val,start=0, end=None): 
+    #recursive
+    #parameters turned into variables, 
+    #unless other values specified in the variables place, 
+    #argument in function definition is taken
     if (end==None):
-        end=len(ls)-1;
+        end=len(ls)-1
     elif (start>end):
-        return None;
-    mid = (start+end)//2;
+        return None
+    mid = (start+end)//2
     if (ls[mid] == val):
-        return mid;
+        return mid
     elif(val<ls[mid]):
-        return binary_search2(ls,val,start, mid-1);
+        return binary_search2(ls,val,start, mid-1) #left half
     else:
-        return binary_search2(ls,val,mid+1, end);
-
+        return binary_search2(ls,val,mid+1, end) #right half
 
 def f():
-    x=1;
-    yield x;
-    x+=1;
-    yield x;
-    x+=1;
-    yield x;
+    x=1
+    yield x
+    x+=1
+    yield x
+    x+=1
+    yield x
 
 def my_range(initial, stop=None, step=1):
     if (stop==None):
-        start = 0;
-        limit = initial;
+        start = 0
+        limit = initial
     else:
-        start = initial;
-        limit = stop;
+        start = initial
+        limit = stop
     while ((step>0 and start<limit) or (step<0 and start>limit)):
-        yield start;
-        start+=step;
+        yield start
+        start+=step
 
 def factors(num):
     for divisor in range(1,int(num**0.5)):
         if (num%divisor==0):
-            yield divisor;
+            yield divisor
             #yield num//divisor;
     for divisor in range(int(num**0.5)+1,0,-1):
         if (num%divisor==0):
-            yield num//divisor;
+            yield num//divisor
 
 def main():
     for i in factors(28):
-        print(i);
+        print(i)
 #    ls=[1,2,3];
 #    for item in iterate_over_list(ls):
 #        print(item);
@@ -95,4 +98,4 @@ def main():
 ##
 
 if __name__=='__main__':
-    main();
+    main()
