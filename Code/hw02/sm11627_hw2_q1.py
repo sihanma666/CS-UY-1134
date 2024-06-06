@@ -9,22 +9,19 @@
 
 def fibs(n):
     ls = [1,1]
-    max = n-1
-    count = 2
+    max, count = n-1, 2
     while(count<max):
         num = ls[count-1] + ls[count-2]
         ls.append(num)
         count += 1
     ls_iter = iter(ls)
-    return ls
+    return ls_iter
 
 def main():
-    for curr_factor in fibs(10):
-         print(curr_factor)
-    # iter = fibs(10)
-    # print(next(iter))
-    # print(next(iter))
-    # print(next(iter))
-    # print(next(iter))
+    iter = fibs(10)
+    print(next(iter))
+    print(next(iter))
+    print(next(iter))
+    print(next(iter))
 
 main()

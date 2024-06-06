@@ -8,23 +8,22 @@
 # The expected output is:
 # 1 2 4 5 10 20 25 50 100
 
-# QUESTIONS: 
-# Is it fine that the print output does not happen in the same line like shown above
-# What is the time complexity of line 29?
 import math
 
-def factors(num): #Theta: sqrt(N)
-    ls_1, ls_2, i = [], [], 1
+def factors(num): #Theta: sqrt(N) 
+    ls_1, ls_2 = [], []
+    i = 1
+    mid_count = 0
     max = math.sqrt(num) 
     while(i<=max): 
         if(num % i == 0):
             if(i != max):
-                ls_1.append(i) 
-                ls_2.insert(0, int(num/i)) 
+                ls_1.insert(mid_count, i) 
+                mid_count += 1 
+                ls_1.insert(mid_count, int(num/i)) 
             else:
-                ls_1.append(i)
-        i+=1
-    ls = ls_1 + ls_2 #
+                ls_1.insert(mid_count, i)
+        i += 1
     return ls
 
 def main():
@@ -34,6 +33,5 @@ def main():
 
 main()
 
-    
-
-
+# QUESTIONS: 
+# Is it fine that the print output does not happen in the same line like shown above
