@@ -13,3 +13,30 @@
 # argument that indicates the direction of the shift (either 'left' or 'right').
 
 # note: cant use pop or insert
+
+def shift_a(lst, k):
+    for i in range(len(lst)):
+        if(i<k):
+            lst.append(lst.pop(0))
+    return lst
+
+def shift(lst, k, str):
+    if(str == 'left'):
+        for i in range(len(lst)):
+            if(i<k):
+                lst.append(lst.pop(0))
+    elif(str == 'right'):
+        k_inv = len(lst)-k
+        for i in range(len(lst)):
+            if(i<k_inv):
+                lst.append(lst.pop(0)) #[561234]
+    else:
+        print('third parameter must be left or right')
+    return lst
+                      
+def main():
+    lst = [1,2,3,4,5,6]
+    lst_iter = iter(shift(lst, 2, 'right'))
+    for i in range(len(lst)):
+        print(next(lst_iter))
+main()
