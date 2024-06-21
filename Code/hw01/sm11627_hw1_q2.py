@@ -33,3 +33,11 @@ def listComprehension_C():
 def main():
     print ("hello")
     print (listComprehension_A(3))
+
+    lst1 = [1,2,3]
+    lst2 = [lst1 for i in range(3)]
+    lst2[0][0] = 10
+    print(lst2)
+    print(lst1)
+
+main()

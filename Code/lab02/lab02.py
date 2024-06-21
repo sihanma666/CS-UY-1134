@@ -23,26 +23,62 @@ def reverse_vowels(input_str):
     list_str = list(input_str)
     low = 0
     high = len(list_str)-1
+    vowels = 'aeiou'
     for i in range(int(len(list_str))/2):
         high_vowel = False
         low_vowel = False
 
         if (low >= high):
             break
-        elif ((high == 'a') or (high == 'e') or (high == 'i') or (high == 'o') or (high == 'u')):
+        elif (list_str[high] in vowels):
             high_vowel = True
-        elif ((low == 'a') or (low == 'e') or (low = 'i') or (low == 'o') or (low == 'u')):
+        elif (list_str[low] in vowels):
             low_vowel = True
 
         if (high_vowel == True and low_vowel == True):
-            temp_str = list_str[low]
-            low = list_str[high]
-            list_str[high] = temp_str
+            list_str[low], list_str[high] = list_str[high], list_str[low]
             low += 1
             high -= 1
-
         elif (high_vowel == True):
             low += 1
         elif (low_vowel == True):
             high -= 1
     return "".join(list_str)
+
+#3
+import math
+
+def find_missing(lst):
+    #a. worst case run-time: N^2
+    # for num in range(len(lst)+1):
+    #     if num not in lst:
+    #         return num
+    #b. hINT: compare value to index
+    left = 0
+    right = len(lst) - 1
+
+    if len(lst) == 0: 
+        return 0
+    if lst[right] == len(lst) - 1:
+        return len(lst)
+    while left < right:
+        mid = (left + right) // 2
+        if lst[mid] != mid:
+            right = mid
+        else:
+            left = mid + 1
+    return left
+
+#def find_missing_c(lst):
+    # find sum of whole list, find actual sum of list
+    # subtract to find missing number
+
+#4
+def find_pivot(lst):
+    left = 0
+    right = len(lst)-1
+    for i in range(len(lst)):
+        if lst[i+1] < lst[i]:
+            return i
+    return None
+
